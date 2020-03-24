@@ -1,7 +1,7 @@
 ember-bedrock
 ==============================================================================
 
-[Short description of the addon.]
+Ember-cli addon used as foundation for most of my ember octane powered apps.
 
 
 Compatibility
@@ -23,7 +23,7 @@ ember install ember-bedrock
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+-- Need to write this section --
 
 
 Contributing
