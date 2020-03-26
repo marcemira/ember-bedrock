@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -7,52 +5,52 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
-      legacyDecorators: true
-    }
+      legacyDecorators: true,
+    },
   },
-  plugins: [
-    'ember'
-  ],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended'
-  ],
+  plugins: ['ember', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:ember/octane', 'prettier'],
   env: {
-    browser: true
+    browser: true,
   },
   rules: {
-    'ember/no-jquery': 'error'
+    'no-undef': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        printWidth: 100,
+        trailingComma: 'all',
+        quoteProps: 'consistent',
+        bracketSpacing: true,
+        arrowParens: 'avoid',
+      },
+    ],
   },
   overrides: [
     // node files
     {
       files: [
+        '.ember-cli.js',
         '.eslintrc.js',
         '.template-lintrc.js',
         'ember-cli-build.js',
-        'index.js',
         'testem.js',
         'blueprints/*/index.js',
         'config/**/*.js',
-        'tests/dummy/config/**/*.js'
+        'lib/*/index.js',
+        'server/**/*.js',
       ],
-      excludedFiles: [
-        'addon/**',
-        'addon-test-support/**',
-        'app/**',
-        'tests/dummy/app/**'
-      ],
+      excludedFiles: ['app/**'],
       parserOptions: {
-        sourceType: 'script'
+        sourceType: 'script',
+        ecmaVersion: 2015,
       },
       env: {
         browser: false,
-        node: true
+        node: true,
       },
       plugins: ['node'],
-      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
-        // add your custom rules and overrides for node files here
-      })
-    }
-  ]
+    },
+  ],
 };
